@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-before_action :find_post, only: [:edit,:update, :destroy]
+before_action :find_post, only: [:show,:edit,:update, :destroy]
 
 
 def index
@@ -21,23 +21,29 @@ def new
 end
 
 def create
-    @post = Post.create(post_params)
+    @post = Post.new(post_params)
+    if @post.valid?
+      @post.save
     redirect_to @post
+    else
+      flash[:errors] = @post.errors.full_messages
+      redirect_to new_post_path
+    end
 end
 
 def edit
-    if Post.find(params[:id]) != nil &&  Blogger.find(params[:id]) != nil
-      @post = Post.find(params[:id]) @blogger
       @blogger = Blogger.find(params[:id])
-    else
-      redirect_to posts_path
-    end
-
 end
 
 def update
     @post.update(post_params)
+    if @post.valid?
     redirect_to @post
+    else
+      flash[:errors] = @post.errors.full_messages
+      redirect_to edit_post_path(@post)
+    end
+
 end
 
 def destroy

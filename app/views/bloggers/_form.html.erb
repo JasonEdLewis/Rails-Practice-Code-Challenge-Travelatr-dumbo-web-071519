@@ -1,6 +1,5 @@
 
 
-
 <%= form_for(@blogger) do |f| %>
 <%= f.label :Name %>
 <%= f.text_field :name %>
@@ -14,3 +13,14 @@
         
 <% end %>
 
+
+<% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+
+       <p style="color:red; font-size: 3000px; text-align: relative">
+        <%= error %>
+       </p>
+
+    <% end %>
+
+<% end %>

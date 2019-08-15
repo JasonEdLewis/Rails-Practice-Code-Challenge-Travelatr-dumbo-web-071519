@@ -14,3 +14,15 @@
 <% end %>
 <br>
 
+
+<% if flash[:errors] %>
+
+    <% flash[:errors].each do |error| %>
+
+    <p style="color:red; text-size: x-large; text-align: center">
+        <%= error %>
+    </p>
+
+    <% end %>
+
+<% end %>

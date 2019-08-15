@@ -14,8 +14,15 @@ class BloggersController < ApplicationController
   end
 
   def create
-    @blogger = Blogger.create(blogger_params)
+    @blogger = Blogger.new(blogger_params)
+    if @blogger.valid?
+      @blogger.save
     redirect_to @blogger
+    else 
+      flash[:errors] = @blogger.errors.full_messages
+      redirect_to new_blogger_path
+    end
+
   end
 
   def edit
@@ -24,7 +31,12 @@ class BloggersController < ApplicationController
 
   def update
     @blogger.update(blogger_params)
+    if @blogger.valid?
     redirect_to @blogger
+    else
+      flash[:errors] = @blogger.errors.full_messages
+      redirect_to edit_blogger_path(@blogger)
+    end
   end
 
   def destroy
