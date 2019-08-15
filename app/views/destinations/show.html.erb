@@ -1,0 +1,8 @@
+<h1>Destinations</h1>
+
+<% i = 0 %>
+<% while i <= 5 %>
+<%= link_to @destination.post.title, post_path(@destination.post) %>
+
+   <% i+=1 %>
+<% end %>

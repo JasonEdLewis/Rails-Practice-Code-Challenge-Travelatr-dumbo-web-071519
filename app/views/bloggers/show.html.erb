@@ -1,0 +1,31 @@
+<h1>Welcome to <%= @blogger.name %>'s Profile!!</h1>
+
+<p> Name: <%= @blogger.name %></p>
+<p> Age: <%= @blogger.age %></p>
+<p> Bio: <%= @blogger.bio %></p>
+
+
+<% if @blogger.post.length > 0 %>
+<h2>Featured Post</h2>
+
+
+<h3>Post</h3>
+
+<% i = [] %>
+<% @blogger.post.each do |post| %>
+
+<li>
+      <%= link_to post.title, post_path(post) %> 
+</li>
+        <% i << post.likes  %>
+        <% end %>
+    <p>Likes: <%= i.reduce { |sum, num| sum + num } %></p>
+
+<% end %>
+
+
+  <p>
+
+  <%= button_to "Delete Account", @blogger, method: :delete %>
+  </p>
+       

@@ -1,0 +1,11 @@
+
+
+
+
+
+
+<h1> <%= @blogger.name %> Update Your "<%= @post.title %>" Post</h1>
+
+<%= render 'form' %>
+
+<%= button_to "Edit", edit_post_path(@post), method: :get %>

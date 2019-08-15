@@ -1,0 +1,18 @@
+
+
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h1>Post Page</h1>
+
+&nbsp;&nbsp;&nbsp;<strong>Title: </strong><%= @post.title %>
+<br>
+<br>
+&nbsp;&nbsp;&nbsp; <strong>By:</strong> <%= @blogger.name %>
+<br><br>
+&nbsp;&nbsp;&nbsp; <p><%= @post.content.slice(0..1) %></p>
+<br>
+&nbsp;&nbsp;&nbsp; <strong>Likes: <%= @post.likes %></strong>
+<br><br>
+
+<strong><%= button_to "Edit Post", edit_post_path(@post.id), method: :get %></strong>
+<%= button_to "Delete Post", @post, method: :delete %>
